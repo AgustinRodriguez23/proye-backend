@@ -1,13 +1,23 @@
 import Usuario from "./Usuario.js"
 import express from "express"
+import { fileURLToPath } from "url"
+import path from "path"
+import { engine } from "express-handlebars"
+
+
+const __filename = fileURLToPath(import.meta.url)
+const __dirname = path.dirname(__filename)
 
 
 const mi_servidor = express()
 
 
+mi_servidor.engine("handlebars", engine())
+mi_servidor.set("view engine", "handlebars")
+
 //end points get/post etc
 mi_servidor.get("/", (req, res) => {
-    res.send("Data")
+    res.render("index")
  })
 
 mi_servidor.get("/usuarios", (req, res) => {
@@ -20,8 +30,3 @@ mi_servidor.listen(8080, () => {
     console.log("server up and running !")
 })
 
-// const usuario_uno = new Usuario("Carlos", "carlitos@gmail", "777888")
-
-
-// usuario_uno.saludar()
-// usuario_uno.getPassword()
