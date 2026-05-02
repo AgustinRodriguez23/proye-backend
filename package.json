@@ -12,7 +12,8 @@
   },
   "dependencies": {
     "express": "^5.2.1",
-    "express-handlebars": "^9.0.1"
+    "express-handlebars": "^9.0.1",
+    "socket.io": "^4.8.3"
   },
   "devDependencies": {
     "@ljharb/tsconfig": "^0.3.2"

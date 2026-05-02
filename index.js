@@ -1,23 +1,20 @@
 import Usuario from "./Usuario.js"
 import express from "express"
-import { fileURLToPath } from "url"
-import path from "path"
 import { engine } from "express-handlebars"
+import { createServer } from "http"
+import { Server } from "socket.io"
 
 
-const __filename = fileURLToPath(import.meta.url)
-const __dirname = path.dirname(__filename)
+const mi_app = express()
+const mi_servidor = createServer(mi_app)
+const io_servidor = new Server(mi_servidor)
+
+mi_app.use(express.static("public"))
+mi_app.use(express.json())
 
 
-const mi_servidor = express()
-
-
-mi_servidor.use(express.static("public"))
-mi_servidor.use(express.json())
-
-
-mi_servidor.engine("handlebars", engine())
-mi_servidor.set("view engine", "handlebars")
+mi_app.engine("handlebars", engine())
+mi_app.set("view engine", "handlebars")
 
 
 const usuarios = [
@@ -26,23 +23,27 @@ const usuarios = [
 ]
 
 //end points get/post etc
-mi_servidor.get("/", (req, res) => {
+mi_app.get("/", (req, res) => {
     res.render("index")
  })
 
- mi_servidor.get("/productos", (req, res) => {
+ mi_app.get("/productos", (req, res) => {
     res.render("productos")
  })
 
-mi_servidor.get("/usuarios", (req, res) => {
+mi_app.get("/usuarios", (req, res) => {
     res.send([usuarios])
  })
 
- mi_servidor.post("/usuarios", (req, res) => {
+ mi_app.post("/usuarios", (req, res) => {
     usuarios.push(req.body)
     res.send("OK")
  })
 
+
+io_servidor.on("connection", (socket) => {
+   console.log("Nuevo cliente conectado")
+ })
 
 // servidor (puerto, callback)
 mi_servidor.listen(8080, () => {

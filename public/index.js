@@ -32,3 +32,5 @@ userForm.addEventListener("submit", (e) => {
         body: usuarioString
     })
 })
+
+const socket = io()
