@@ -2,12 +2,20 @@ import Usuario from "./Usuario.js"
 import express from "express"
 import { engine } from "express-handlebars"
 import { createServer } from "http"
+import mongoose, { mongo } from "mongoose"
 import { Server } from "socket.io"
 
 
 const mi_app = express()
 const mi_servidor = createServer(mi_app)
 const io_servidor = new Server(mi_servidor)
+const PORT = 8080
+
+const userSchema = new mongoose.Schema({
+   nombre : String 
+})
+
+const userModel = mongoose.model("user", userSchema)
 
 mi_app.use(express.static("public"))
 mi_app.use(express.json())
@@ -28,6 +36,8 @@ mi_app.get("/", (req, res) => {
  })
 
  mi_app.get("/productos", (req, res) => {
+
+    userModel.create({ nombre: "luis" })
     res.render("productos")
  })
 
@@ -46,7 +56,8 @@ io_servidor.on("connection", (socket) => {
  })
 
 // servidor (puerto, callback)
-mi_servidor.listen(8080, () => {
+mongoose.connect("mongodb://127.0.0.1:27017")
+mi_servidor.listen(PORT, () => {
     console.log("server up and running !")
 })
 
