@@ -36,8 +36,6 @@ mi_app.get("/", (req, res) => {
  })
 
  mi_app.get("/productos", (req, res) => {
-
-    userModel.create({ nombre: "luis" })
     res.render("productos")
  })
 
@@ -46,8 +44,14 @@ mi_app.get("/usuarios", (req, res) => {
  })
 
  mi_app.post("/usuarios", (req, res) => {
-    usuarios.push(req.body)
-    res.send("OK")
+   userModel.create({ nombre: req.body.nombre })
+   .then(() => {
+      res.send("OK")
+   })
+   .catch(() => {
+      res.status(500).send("error")
+   })
+   
  })
 
 
@@ -57,6 +61,12 @@ io_servidor.on("connection", (socket) => {
 
 // servidor (puerto, callback)
 mongoose.connect("mongodb://127.0.0.1:27017")
+   .then(() => {
+      console.log("conectado a la DB")
+   })
+   .catch(() => {
+   })
+
 mi_servidor.listen(PORT, () => {
     console.log("server up and running !")
 })
