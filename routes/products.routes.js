@@ -3,6 +3,6 @@ import ViewsController from "../controllers/views.controller.js"
 
 const router = Router()
 
-router.get("/productos", ViewsController.getProducts)
+router.get("/products", ViewsController.getProducts)
 
  export default router

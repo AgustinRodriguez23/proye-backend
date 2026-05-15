@@ -15,7 +15,7 @@ io_servidor.on("connection", (socket) => {
  })
 
 // servidor (puerto, callback)
-mongoose.connect("mongodb://127.0.0.1:27017")
+mongoose.connect("mongodb://127.0.0.1:27017/ecommerce")
    .then(() => {
       console.log("conectado a la DB")
    })
