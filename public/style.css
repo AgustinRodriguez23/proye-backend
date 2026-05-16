@@ -7,3 +7,109 @@
 body {
     background-color: rgb(193, 216, 231);
 }
+
+#products-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+  padding: 1.5rem;
+}
+
+.product-item {
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  overflow: hidden;
+  transition: border-color 0.15s;
+}
+.product-item:hover { border-color: #9ca3af; }
+
+.product-item img {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+}
+
+.product-body { padding: 1rem; }
+
+.product-code { font-size: 11px; color: #9ca3af; margin-bottom: 6px; }
+.product-title { font-size: 15px; font-weight: 500; margin-bottom: 4px; }
+
+.product-category {
+  display: inline-block;
+  font-size: 12px;
+  padding: 2px 8px;
+  border-radius: 6px;
+  background: #eff6ff;
+  color: #3b82f6;
+  margin-bottom: 12px;
+}
+
+.status-badge {
+  display: inline-block;
+  font-size: 11px;
+  padding: 2px 8px;
+  border-radius: 6px;
+  font-weight: 500;
+  margin-bottom: 8px;
+}
+.status-active  { background: #f0fdf4; color: #16a34a; }
+.status-inactive { background: #fef2f2; color: #dc2626; }
+
+.product-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 10px;
+  border-top: 1px solid #f3f4f6;
+}
+
+.product-price { font-size: 16px; font-weight: 500; }
+.product-stock { font-size: 12px; color: #6b7280; }
+
+.product-item {
+    text-decoration: none;
+    color: inherit;
+    cursor: pointer;
+}
+
+.back-link {
+    display: inline-block;
+    margin-bottom: 1.5rem;
+    color: #6b7280;
+    text-decoration: none;
+    font-size: 14px;
+}
+.back-link:hover { color: #111; }
+
+.product-detail-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.product-detail-image img {
+    width: 100%;
+    border-radius: 12px;
+    object-fit: cover;
+}
+
+.product-detail-info h1 {
+    font-size: 24px;
+    font-weight: 500;
+    margin: 0.5rem 0;
+}
+
+.product-detail-info .product-price {
+    font-size: 22px;
+    font-weight: 500;
+    margin: 1rem 0;
+}
+
+@media (max-width: 600px) {
+    .product-detail-container {
+        grid-template-columns: 1fr;
+    }
+}

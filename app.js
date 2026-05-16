@@ -4,7 +4,6 @@ import { engine } from "express-handlebars"
 import landingRoutes from "./routes/landing.routes.js"
 import productsRoutes from "./routes/products.routes.js"
 import productApiRoutes from "./routes/products.api.routes.js"
-import usersRoutes from "./routes/users.routes.js"
 import cartApiRoutes from "./routes/carts.api.routes.js"
 
 const mi_app = express()
@@ -20,7 +19,6 @@ mi_app.set("view engine", "handlebars")
 
 mi_app.use(landingRoutes)
 mi_app.use(productsRoutes)
-mi_app.use(usersRoutes)
 
 mi_app.use("/api/products", productApiRoutes)
 mi_app.use("/api/carts", cartApiRoutes)

@@ -1,0 +1,22 @@
+<div class="product-detail">
+    <a href="/" class="back-link">← Volver</a>
+
+    <div class="product-detail-container">
+        <div class="product-detail-image">
+            <img src="{{lookup product.thumbnails 0}}" alt="{{product.title}}"/>
+        </div>
+
+        <div class="product-detail-info">
+            <p class="product-code">{{product.code}}</p>
+            <h1>{{product.title}}</h1>
+            <span class="product-category">{{product.category}}</span>
+
+            <p class="product-price">${{product.price}}</p>
+
+            <div class="product-meta">
+                <span class="stock">Stock disponible: {{product.stock}}</span>
+                <span class="status-badge {{product.status}}">{{product.status}}</span>
+            </div>
+        </div>
+    </div>
+</div>
