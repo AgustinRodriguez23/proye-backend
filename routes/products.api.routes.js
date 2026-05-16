@@ -3,9 +3,7 @@ import ProductsController from "../controllers/products.controller.js"
 
 const router = Router()
 
-router.get("/", (req, res) => {
-    res.send("hola /")
-})
+router.get("/", ProductsController.getProducts)
 router.get("/id", (req, res) => {
     res.send("hola id")
 })

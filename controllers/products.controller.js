@@ -2,7 +2,13 @@ import productModel from "../models/products.model.js"
 
 class ProductsController {
     static getProducts = (req, res) => {
-    
+        productModel.find()
+            .then((data) => {
+                res.send(data)
+            })
+            .catch((err) => {
+                return res.status(500).send("hubo un error")
+            })
     }
 
 

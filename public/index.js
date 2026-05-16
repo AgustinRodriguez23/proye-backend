@@ -5,12 +5,19 @@ const userForm = document.querySelector("#user-form")
 
 btn.addEventListener("click",()=>{
 
-    fetch("/usuarios")
+    fetch("/api/products")
         .then((res) => {
             return res.json()
         })
         .then((data) => {
-            console.log(data)
+            const productsList = document.querySelector("#products-list")
+
+            data.forEach((product) => {
+                const li = document.createElement("li")
+                li.innerText = `${product.title} - $${product.price || 0}`
+                productsList.appendChild(li)
+
+            })
         })
         .catch(() => {
             console.log("error 404")
