@@ -1,0 +1,39 @@
+<div class="detail-layout">
+  <div class="detail-image">
+    {{#if product.thumbnails.length}}
+      <img src="{{product.thumbnails.[0]}}" alt="{{product.title}}" />
+    {{else}}
+      <div class="detail-img-placeholder">👟</div>
+    {{/if}}
+  </div>
+
+  <div class="detail-info">
+    <span class="product-category">{{product.category}}</span>
+    <h1>{{product.title}}</h1>
+    <p class="detail-description">{{product.description}}</p>
+
+    <div class="detail-meta">
+      <span class="detail-code">Código: {{product.code}}</span>
+      {{#if product.status}}
+        <span class="badge-in">En stock ({{product.stock}} unidades)</span>
+      {{else}}
+        <span class="badge-out">Sin stock</span>
+      {{/if}}
+    </div>
+
+    <p class="detail-price">${{product.price}}</p>
+
+    {{#if product.status}}
+      <div class="detail-actions">
+        <input type="number" id="quantity" value="1" min="1" max="{{product.stock}}" class="qty-input" />
+        <button class="btn btn-primary btn-lg" onclick="addToCartDetail('{{product._id}}')">
+          🛒 Agregar al carrito
+        </button>
+      </div>
+    {{/if}}
+
+    <a href="/products" class="btn btn-secondary mt-1">← Volver</a>
+  </div>
+</div>
+
+<div id="toast" class="toast hidden"></div>

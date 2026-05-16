@@ -1,0 +1,78 @@
+<div class="page-header">
+  <h1>Zapatillas</h1>
+  <p class="subtitle">{{totalDocs}} modelos disponibles</p>
+</div>
+
+<!-- Filtros -->
+<form class="filters" method="GET" action="/products">
+  <select name="query">
+    <option value="">Todas las categorías</option>
+    <option value="category:nike" {{#if (eq activeQuery 'category:nike')}}selected{{/if}}>Nike</option>
+    <option value="category:adidas" {{#if (eq activeQuery 'category:adidas')}}selected{{/if}}>Adidas</option>
+    <option value="category:puma" {{#if (eq activeQuery 'category:puma')}}selected{{/if}}>Puma</option>
+  </select>
+  <select name="sort">
+    <option value="">Sin orden</option>
+    <option value="asc" {{#if (eq activeSort 'asc')}}selected{{/if}}>Precio: menor a mayor</option>
+    <option value="desc" {{#if (eq activeSort 'desc')}}selected{{/if}}>Precio: mayor a menor</option>
+  </select>
+  <select name="limit">
+    <option value="8" {{#if (eq activeLimit '8')}}selected{{/if}}>8 por página</option>
+    <option value="16" {{#if (eq activeLimit '16')}}selected{{/if}}>16 por página</option>
+    <option value="32" {{#if (eq activeLimit '32')}}selected{{/if}}>32 por página</option>
+  </select>
+  <button type="submit" class="btn btn-primary">Filtrar</button>
+</form>
+
+<!-- Grilla de productos -->
+{{#if products.length}}
+  <div class="product-grid" id="product-grid">
+    {{#each products}}
+      <div class="product-card" id="product-{{_id}}">
+        <a href="/products/{{_id}}">
+          {{#if thumbnails.length}}
+            <img src="{{thumbnails.[0]}}" alt="{{title}}" class="product-img" />
+          {{else}}
+            <div class="product-img-placeholder">👟</div>
+          {{/if}}
+          <div class="product-info">
+            <span class="product-category">{{category}}</span>
+            <h3 class="product-title">{{title}}</h3>
+            <p class="product-price">${{price}}</p>
+            {{#unless status}}
+              <span class="badge-out">Sin stock</span>
+            {{/unless}}
+          </div>
+        </a>
+        {{#if status}}
+          <button class="btn btn-cart" onclick="addToCart('{{_id}}')">Agregar al carrito</button>
+        {{/if}}
+      </div>
+    {{/each}}
+  </div>
+{{else}}
+  <div class="empty-state">
+    <p>No se encontraron productos con esos filtros.</p>
+    <a href="/products" class="btn btn-primary">Ver todos</a>
+  </div>
+{{/if}}
+
+<!-- Paginación -->
+<div class="pagination">
+  {{#if hasPrevPage}}
+    <a href="{{prevLink}}" class="btn btn-page">← Anterior</a>
+  {{else}}
+    <span class="btn btn-page disabled">← Anterior</span>
+  {{/if}}
+
+  <span class="page-info">Página {{page}} de {{totalPages}}</span>
+
+  {{#if hasNextPage}}
+    <a href="{{nextLink}}" class="btn btn-page">Siguiente →</a>
+  {{else}}
+    <span class="btn btn-page disabled">Siguiente →</span>
+  {{/if}}
+</div>
+
+<!-- Toast notification -->
+<div id="toast" class="toast hidden"></div>

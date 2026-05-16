@@ -1,0 +1,64 @@
+<div class="page-header">
+  <h1>🛒 Carrito</h1>
+  <p class="subtitle">ID: {{cart._id}}</p>
+</div>
+
+{{#if cart.products.length}}
+  <div class="cart-layout">
+    <div class="cart-items" id="cart-items">
+      {{#each cart.products}}
+        <div class="cart-item" id="cart-item-{{product._id}}">
+          <div class="cart-item-img">
+            {{#if product.thumbnails.length}}
+              <img src="{{product.thumbnails.[0]}}" alt="{{product.title}}" />
+            {{else}}
+              <span>👟</span>
+            {{/if}}
+          </div>
+
+          <div class="cart-item-info">
+            <h3><a href="/products/{{product._id}}">{{product.title}}</a></h3>
+            <p class="product-category">{{product.category}}</p>
+            <p class="cart-item-price">${{product.price}} c/u</p>
+          </div>
+
+          <div class="cart-item-controls">
+            <button class="qty-btn" onclick="changeQty('{{../cart._id}}', '{{product._id}}', {{quantity}}, -1)">−</button>
+            <span class="qty-display" id="qty-{{product._id}}">{{quantity}}</span>
+            <button class="qty-btn" onclick="changeQty('{{../cart._id}}', '{{product._id}}', {{quantity}}, 1)">+</button>
+          </div>
+
+          <div class="cart-item-subtotal">
+            <p id="subtotal-{{product._id}}">${{multiply product.price quantity}}</p>
+            <button class="btn-remove" onclick="removeFromCart('{{../cart._id}}', '{{product._id}}')">✕</button>
+          </div>
+        </div>
+      {{/each}}
+    </div>
+
+    <div class="cart-summary">
+      <h2>Resumen</h2>
+      <div class="summary-row">
+        <span>Subtotal</span>
+        <span id="cart-total">${{total}}</span>
+      </div>
+      <div class="summary-row">
+        <span>Envío</span>
+        <span>Gratis</span>
+      </div>
+      <div class="summary-row total-row">
+        <span>Total</span>
+        <span>${{total}}</span>
+      </div>
+      <button class="btn btn-primary btn-lg btn-block">Finalizar compra</button>
+      <button class="btn btn-secondary btn-block mt-1" onclick="clearCart('{{cart._id}}')">Vaciar carrito</button>
+    </div>
+  </div>
+{{else}}
+  <div class="empty-state">
+    <p>Tu carrito está vacío.</p>
+    <a href="/products" class="btn btn-primary">Ver productos</a>
+  </div>
+{{/if}}
+
+<div id="toast" class="toast hidden"></div>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{{title}} — SneakersEZP</title>
+  <link rel="stylesheet" href="/css/styles.css" />
+</head>
+<body>
+  <header class="navbar">
+    <a href="/products" class="brand">👟 SneakersEZP</a>
+    <nav>
+      <a href="/products">Productos</a>
+    </nav>
+  </header>
+
+  <main class="container">
+    {{{body}}}
+  </main>
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="/js/main.js"></script>
+  {{#if extraScript}}
+    <script src="/js/{{extraScript}}"></script>
+  {{/if}}
+</body>
+</html>

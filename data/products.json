@@ -1,0 +1,189 @@
+[
+  {
+    "id": "1",
+    "title": "Laptop Pro",
+    "description": "Laptop de alto rendimiento",
+    "code": "LAP001",
+    "price": 1200,
+    "status": true,
+    "stock": 15,
+    "category": "electronica",
+    "thumbnails": []
+  },
+  {
+    "id": "2",
+    "title": "Mouse Inalámbrico",
+    "description": "Mouse ergonómico sin cable",
+    "code": "MOU001",
+    "price": 25,
+    "status": true,
+    "stock": 50,
+    "category": "perifericos",
+    "thumbnails": []
+  },
+  {
+    "id": "3",
+    "title": "Teclado Mecánico",
+    "description": "Teclado con switches Cherry MX",
+    "code": "TEC001",
+    "price": 90,
+    "status": true,
+    "stock": 30,
+    "category": "perifericos",
+    "thumbnails": []
+  },
+  {
+    "id": "4",
+    "title": "Monitor 4K",
+    "description": "Monitor UHD 27 pulgadas",
+    "code": "MON001",
+    "price": 450,
+    "status": true,
+    "stock": 10,
+    "category": "electronica",
+    "thumbnails": []
+  },
+  {
+    "id": "5",
+    "title": "Auriculares Bluetooth",
+    "description": "Auriculares con cancelación de ruido",
+    "code": "AUR001",
+    "price": 180,
+    "status": false,
+    "stock": 0,
+    "category": "audio",
+    "thumbnails": []
+  },
+  {
+    "id": "6",
+    "title": "Webcam HD",
+    "description": "Cámara web 1080p",
+    "code": "CAM001",
+    "price": 60,
+    "status": true,
+    "stock": 25,
+    "category": "perifericos",
+    "thumbnails": []
+  },
+  {
+    "id": "7",
+    "title": "SSD 1TB",
+    "description": "Disco sólido de alta velocidad",
+    "code": "SSD001",
+    "price": 110,
+    "status": true,
+    "stock": 40,
+    "category": "almacenamiento",
+    "thumbnails": []
+  },
+  {
+    "id": "8",
+    "title": "Router WiFi 6",
+    "description": "Router de última generación",
+    "code": "ROU001",
+    "price": 200,
+    "status": true,
+    "stock": 8,
+    "category": "redes",
+    "thumbnails": []
+  },
+  {
+    "id": "9",
+    "title": "Tablet Android",
+    "description": "Tablet 10 pulgadas",
+    "code": "TAB001",
+    "price": 300,
+    "status": true,
+    "stock": 20,
+    "category": "electronica",
+    "thumbnails": []
+  },
+  {
+    "id": "10",
+    "title": "Hub USB-C",
+    "description": "Hub con 7 puertos",
+    "code": "HUB001",
+    "price": 40,
+    "status": true,
+    "stock": 35,
+    "category": "perifericos",
+    "thumbnails": []
+  },
+  {
+    "id": "11",
+    "title": "Impresora Láser",
+    "description": "Impresora monocromática",
+    "code": "IMP001",
+    "price": 250,
+    "status": false,
+    "stock": 0,
+    "category": "impresion",
+    "thumbnails": []
+  },
+  {
+    "id": "12",
+    "title": "Parlante Bluetooth",
+    "description": "Parlante portátil resistente al agua",
+    "code": "PAR001",
+    "price": 75,
+    "status": true,
+    "stock": 18,
+    "category": "audio",
+    "thumbnails": []
+  },
+  {
+    "id": "13",
+    "title": "Smartphone X",
+    "description": "Teléfono de gama alta",
+    "code": "SMR001",
+    "price": 999,
+    "status": true,
+    "stock": 12,
+    "category": "electronica",
+    "thumbnails": []
+  },
+  {
+    "id": "14",
+    "title": "Cable HDMI 2.1",
+    "description": "Cable 4K 120Hz 2 metros",
+    "code": "CAB001",
+    "price": 15,
+    "status": true,
+    "stock": 100,
+    "category": "cables",
+    "thumbnails": []
+  },
+  {
+    "id": "15",
+    "title": "Soporte para Monitor",
+    "description": "Soporte articulado de escritorio",
+    "code": "SOP001",
+    "price": 55,
+    "status": true,
+    "stock": 22,
+    "category": "accesorios",
+    "thumbnails": []
+  },
+  {
+    "id": "16",
+    "title": "Producto Nuevo",
+    "description": "Desc",
+    "code": "NEW001",
+    "price": 99,
+    "status": true,
+    "stock": 10,
+    "category": "test",
+    "thumbnails": []
+  },
+  {
+    "id": "17",
+    "title": "Air Max 90",
+    "description": "Zapatilla clásica Nike",
+    "code": "AIR90-BLK",
+    "price": 150,
+    "status": true,
+    "stock": 20,
+    "category": "running",
+    "thumbnails": []
+  }
+]
