@@ -147,3 +147,15 @@ async function clearCart(cartId) {
     showToast("Error al vaciar el carrito", "error");
   }
 }
+
+async function irAlCarrito() {
+  let cartId = getCartId();
+  if (!cartId) {
+    // Si no tiene carrito todavía, crea uno
+    const res = await fetch("/api/carts", { method: "POST" });
+    const data = await res.json();
+    cartId = data.payload._id;
+    localStorage.setItem("cartId", cartId);
+  }
+  window.location.href = `/carts/${cartId}`;
+}
