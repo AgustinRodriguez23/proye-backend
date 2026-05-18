@@ -1,6 +1,6 @@
 const initSocket = (io) => {
   io.on("connection", (socket) => {
-    console.log(`🔌 Cliente conectado: ${socket.id}`);
+    //console.log(`🔌 Cliente conectado: ${socket.id}`);
 
     // ── Carrito ──────────────────────────────────────────────────────────
     // Agrega producto → notifica a todos los clientes del mismo carrito

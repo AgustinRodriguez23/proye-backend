@@ -133,9 +133,57 @@ async function removeFromCart(cartId, productId) {
   }
 }
 
+function showConfirm({ title = "¿Confirmar?", message = "", confirmText = "Confirmar", cancelText = "Cancelar" } = {}) {
+  return new Promise((resolve) => {
+    const overlay = document.createElement("div");
+    overlay.style.cssText = `
+      position: fixed; inset: 0; z-index: 9999;
+      background: rgba(0,0,0,0.45);
+      display: flex; align-items: center; justify-content: center;
+    `;
+
+    overlay.innerHTML = `
+      <div style="
+        background: #fff; border-radius: 12px;
+        padding: 24px 28px; width: 320px;
+        box-shadow: 0 8px 32px rgba(0,0,0,0.18);
+        font-family: sans-serif;
+      ">
+        <p style="margin: 0 0 6px; font-weight: 600; font-size: 16px; color: #111;">${title}</p>
+        ${message ? `<p style="margin: 0 0 20px; font-size: 14px; color: #666;">${message}</p>` : `<div style="margin-bottom:20px"></div>`}
+        <div style="display: flex; gap: 10px; justify-content: flex-end;">
+          <button id="modal-cancel" style="
+            padding: 8px 16px; border-radius: 8px;
+            border: 1px solid #ddd; background: #f5f5f5;
+            font-size: 14px; cursor: pointer; color: #333;
+          ">${cancelText}</button>
+          <button id="modal-confirm" style="
+            padding: 8px 16px; border-radius: 8px;
+            border: none; background: #e53e3e;
+            font-size: 14px; cursor: pointer; color: #fff; font-weight: 500;
+          ">${confirmText}</button>
+        </div>
+      </div>
+    `;
+
+    document.body.appendChild(overlay);
+
+    overlay.querySelector("#modal-confirm").onclick = () => { document.body.removeChild(overlay); resolve(true); };
+    overlay.querySelector("#modal-cancel").onclick  = () => { document.body.removeChild(overlay); resolve(false); };
+    overlay.addEventListener("click", (e) => { if (e.target === overlay) { document.body.removeChild(overlay); resolve(false); } });
+  });
+}
+
 // ── Vaciar carrito ────────────────────────────────────────────────────────
 async function clearCart(cartId) {
-  if (!confirm("¿Vaciar el carrito?")) return;
+  const ok = await showConfirm({
+    title: "¿Vaciar el carrito?",
+    message: "Esta acción no se puede deshacer.",
+    confirmText: "Sí, vaciar",
+    cancelText: "Cancelar",
+  });
+  if (!ok) return;
+
   try {
     const res = await fetch(`/api/carts/${cartId}`, { method: "DELETE" });
     const data = await res.json();
