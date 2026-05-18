@@ -3,7 +3,7 @@ import { productManager, cartManager } from "../factory.js";
 
 const router = Router();
 
-// ── /products ─────────────────────────────────────────────────────────────
+// /products
 router.get("/products", async (req, res) => {
   try {
     const { limit = 8, page = 1, query = "", sort = "" } = req.query;
@@ -36,7 +36,7 @@ router.get("/products", async (req, res) => {
   }
 });
 
-// ── /products/:pid ────────────────────────────────────────────────────────
+// /products/:pid
 router.get("/products/:pid", async (req, res) => {
   try {
     const product = await productManager.getProductById(req.params.pid);
@@ -46,7 +46,7 @@ router.get("/products/:pid", async (req, res) => {
   }
 });
 
-// ── /carts/:cid ───────────────────────────────────────────────────────────
+// /carts/:cid
 router.get("/carts/:cid", async (req, res) => {
   try {
     const cart = await cartManager.getCartById(req.params.cid);

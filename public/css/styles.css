@@ -1,4 +1,3 @@
-/* ── Reset & base ─────────────────────────────────────────────────────────── */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 :root {
@@ -23,7 +22,7 @@ body {
 
 a { text-decoration: none; color: inherit; }
 
-/* ── Navbar ───────────────────────────────────────────────────────────────── */
+/* Navbar */
 .navbar {
   background: var(--black);
   color: var(--white);
@@ -45,15 +44,15 @@ a { text-decoration: none; color: inherit; }
 }
 .navbar nav a:hover { color: var(--white); }
 
-/* ── Container ────────────────────────────────────────────────────────────── */
+/* Container */
 .container { max-width: 1200px; margin: 0 auto; padding: 2rem 1.5rem; }
 
-/* ── Page header ──────────────────────────────────────────────────────────── */
+/* Page header */
 .page-header { margin-bottom: 1.5rem; }
 .page-header h1 { font-size: 2rem; font-weight: 800; }
 .subtitle { color: var(--gray-400); margin-top: .25rem; font-size: .95rem; }
 
-/* ── Filters ──────────────────────────────────────────────────────────────── */
+/* Filters */
 .filters {
   display: flex;
   gap: .75rem;
@@ -73,7 +72,7 @@ a { text-decoration: none; color: inherit; }
   cursor: pointer;
 }
 
-/* ── Buttons ──────────────────────────────────────────────────────────────── */
+/* Buttons */
 .btn {
   display: inline-block;
   padding: .55rem 1.2rem;
@@ -104,7 +103,7 @@ a { text-decoration: none; color: inherit; }
 .btn-block { display: block; width: 100%; text-align: center; }
 .mt-1 { margin-top: .75rem; }
 
-/* ── Product grid ─────────────────────────────────────────────────────────── */
+/* Product grid*/
 .product-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
@@ -135,15 +134,15 @@ a { text-decoration: none; color: inherit; }
 .product-title { font-size: 1rem; font-weight: 700; margin: .3rem 0; }
 .product-price { font-size: 1.15rem; font-weight: 800; color: var(--accent); }
 
-/* ── Badges ───────────────────────────────────────────────────────────────── */
+/* Badges */
 .badge-in { background: #d1fae5; color: #065f46; font-size: .75rem; padding: .2rem .6rem; border-radius: 99px; font-weight: 600; }
 .badge-out { background: #fee2e2; color: #991b1b; font-size: .75rem; padding: .2rem .6rem; border-radius: 99px; font-weight: 600; }
 
-/* ── Pagination ───────────────────────────────────────────────────────────── */
+/* Pagination */
 .pagination { display: flex; align-items: center; justify-content: center; gap: 1rem; margin-top: 1rem; }
 .page-info { color: var(--gray-400); font-size: .9rem; }
 
-/* ── Product detail ───────────────────────────────────────────────────────── */
+/* Product detail */
 .detail-layout {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -176,7 +175,7 @@ a { text-decoration: none; color: inherit; }
   font-size: 1rem; font-weight: 600;
 }
 
-/* ── Cart ─────────────────────────────────────────────────────────────────── */
+/* Cart */
 .cart-layout { display: grid; grid-template-columns: 1fr 320px; gap: 2rem; align-items: start; }
 @media (max-width: 800px) { .cart-layout { grid-template-columns: 1fr; } }
 
@@ -229,11 +228,11 @@ a { text-decoration: none; color: inherit; }
 .summary-row { display: flex; justify-content: space-between; padding: .6rem 0; border-bottom: 1px solid var(--gray-200); font-size: .95rem; }
 .total-row { font-weight: 800; font-size: 1.1rem; border-bottom: none; margin-top: .5rem; }
 
-/* ── Empty state ──────────────────────────────────────────────────────────── */
+/* Empty state */
 .empty-state { text-align: center; padding: 4rem 0; color: var(--gray-400); }
 .empty-state p { font-size: 1.1rem; margin-bottom: 1rem; }
 
-/* ── Toast ────────────────────────────────────────────────────────────────── */
+/* Toast */
 .toast {
   position: fixed; bottom: 2rem; right: 2rem;
   background: var(--black); color: var(--white);

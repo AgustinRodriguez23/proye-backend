@@ -28,7 +28,6 @@ router.get("/:pid", async (req, res) => {
 });
 
 // POST /api/products
-// Body: { title, description, code, price, status, stock, category, thumbnails }
 router.post("/", async (req, res) => {
   try {
     const { title, description, code, price, status, stock, category, thumbnails } = req.body;

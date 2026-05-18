@@ -49,7 +49,7 @@
         <span>Total</span>
         <span>${{total}}</span>
       </div>
-      <button class="btn btn-primary btn-lg btn-block">Finalizar compra</button>
+      <button class="btn btn-primary btn-lg btn-block" onclick="processCheckout('{{cart._id}}')">Finalizar compra</button>
       <button class="btn btn-secondary btn-block mt-1" onclick="clearCart('{{cart._id}}')">Vaciar carrito</button>
     </div>
   </div>

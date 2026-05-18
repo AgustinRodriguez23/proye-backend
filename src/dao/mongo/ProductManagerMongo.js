@@ -14,7 +14,6 @@ class ProductManagerMongo {
     const lim = parseInt(limit, 10) || 10;
     const pg = parseInt(page, 10) || 1;
 
-    // ── filter ──────────────────────────────────────────────────────────────
     const filter = {};
     if (query) {
       const [field, value] = query.split(":");
@@ -22,10 +21,8 @@ class ProductManagerMongo {
       else if (field === "status") filter.status = value === "true";
     }
 
-    // ── sort ────────────────────────────────────────────────────────────────
     const sortOption = sort === "asc" ? { price: 1 } : sort === "desc" ? { price: -1 } : {};
 
-    // ── paginate ─────────────────────────────────────────────────────────────
     const totalDocs = await Product.countDocuments(filter);
     const totalPages = Math.ceil(totalDocs / lim) || 1;
     const safePage = Math.min(Math.max(pg, 1), totalPages);

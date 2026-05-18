@@ -1,8 +1,7 @@
 const initSocket = (io) => {
   io.on("connection", (socket) => {
-    //console.log(`🔌 Cliente conectado: ${socket.id}`);
 
-    // ── Carrito ──────────────────────────────────────────────────────────
+    // Carrito
     // Agrega producto → notifica a todos los clientes del mismo carrito
     socket.on("cart:add", ({ cartId, productId, quantity }) => {
       socket.broadcast.emit("cart:updated", { cartId, productId, quantity });
@@ -23,7 +22,7 @@ const initSocket = (io) => {
       socket.broadcast.emit("cart:cleared", { cartId });
     });
 
-    // ── Productos ─────────────────────────────────────────────────────────
+    // Productos
     // Nuevo producto creado → broadcast a todos
     socket.on("product:new", (product) => {
       socket.broadcast.emit("product:added", product);

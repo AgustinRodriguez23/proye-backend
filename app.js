@@ -18,7 +18,7 @@ const httpServer = createServer(app);
 const io = new Server(httpServer);
 const PORT = process.env.PORT || 8080;
 
-// ── Handlebars ────────────────────────────────────────────────────────────────
+// Handlebars
 app.engine(
   "handlebars",
   engine({
@@ -34,15 +34,15 @@ app.engine(
 app.set("view engine", "handlebars");
 app.set("views", path.join(__dirname, "src/views"));
 
-// ── Middlewares ───────────────────────────────────────────────────────────────
+// Middlewares
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, "public")));
 
-// ── Rutas vistas ──────────────────────────────────────────────────────────────
+// Rutas vistas
 app.use("/", viewsRouter);
 
-// ── Rutas API ─────────────────────────────────────────────────────────────────
+// Rutas API
 app.use("/api/products", productsRouter);
 app.use("/api/carts", cartsRouter);
 
@@ -57,10 +57,10 @@ app.use((req, res) => {
 // Error handler
 app.use(errorHandler);
 
-// ── Socket.io ─────────────────────────────────────────────────────────────────
+// Socket.io
 initSocket(io);
 
-// ── Start ─────────────────────────────────────────────────────────────────────
+// Start
 const startServer = async () => {
   const persistence = process.env.PERSISTENCE?.toUpperCase() ?? "MONGO";
   if (persistence !== "FS") await connectDB();

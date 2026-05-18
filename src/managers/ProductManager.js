@@ -6,7 +6,6 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const FILE_PATH = path.join(__dirname, "../../data/products.json");
 
 class ProductManager {
-  // ── helpers ──────────────────────────────────────────────────────────────
   async #read() {
     const raw = await fs.readFile(FILE_PATH, "utf-8");
     return JSON.parse(raw);
@@ -22,7 +21,7 @@ class ProductManager {
     return String(max + 1);
   }
 
-  // ── public API ────────────────────────────────────────────────────────────
+  // public API
 
   /**
    * Get products with pagination, filtering and sorting.
@@ -36,7 +35,6 @@ class ProductManager {
   async getProducts({ limit = 10, page = 1, query = "", sort = "", baseUrl = "" } = {}) {
     let products = await this.#read();
 
-    // ── filter ──────────────────────────────────────────────────────────────
     if (query) {
       const [field, value] = query.split(":");
       if (field === "category") {
@@ -49,14 +47,13 @@ class ProductManager {
       }
     }
 
-    // ── sort ────────────────────────────────────────────────────────────────
     if (sort === "asc") {
       products.sort((a, b) => a.price - b.price);
     } else if (sort === "desc") {
       products.sort((a, b) => b.price - a.price);
     }
 
-    // ── pagination ──────────────────────────────────────────────────────────
+    // paginación
     const lim = parseInt(limit, 10) || 10;
     const pg = parseInt(page, 10) || 1;
     const totalDocs = products.length;
@@ -69,7 +66,6 @@ class ProductManager {
     const hasPrevPage = safePage > 1;
     const hasNextPage = safePage < totalPages;
 
-    // ── build links ─────────────────────────────────────────────────────────
     const buildLink = (targetPage) => {
       const params = new URLSearchParams({ limit: lim, page: targetPage });
       if (query) params.set("query", query);
