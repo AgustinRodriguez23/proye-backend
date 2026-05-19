@@ -10,6 +10,7 @@ import initSocket from "./src/config/socket.js";
 import productsRouter from "./src/routes/products.router.js";
 import cartsRouter from "./src/routes/carts.router.js";
 import viewsRouter from "./src/routes/views.router.js";
+import orderRouter from "./src/routes/order.router.js"
 import errorHandler from "./src/middleware/errorHandler.js";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
@@ -45,6 +46,7 @@ app.use("/", viewsRouter);
 // Rutas API
 app.use("/api/products", productsRouter);
 app.use("/api/carts", cartsRouter);
+app.use("/api/orders", orderRouter)
 
 // Ruta raíz → redirige a /products
 app.get("/", (req, res) => res.redirect("/products"));

@@ -207,6 +207,14 @@ async function irAlCarrito() {
   window.location.href = `/carts/${cartId}`;
 }
 
+async function guardarPedido(orderId, cartId) {
+  await fetch("/api/orders", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ orderId, cartId }),
+  });
+}
+
 function showCheckout({
   title = "¿Finalizar compra?",
   summary = "",
@@ -314,4 +322,9 @@ async function processCheckout(cartId, { itemCount, total, email = null } = {}) 
   });
 
   if (!ok) return;
+
+  await guardarPedido(orderId, cartId);
+
+  await fetch(`/api/carts/${cartId}/products`, { method: "DELETE" });
+  location.reload();
 }

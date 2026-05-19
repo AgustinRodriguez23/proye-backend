@@ -1,5 +1,6 @@
 import { Router } from "express";
 import { cartManager } from "../factory.js";
+import Cart from "../models/cart.model.js"
 
 const router = Router();
 
@@ -75,6 +76,13 @@ router.delete("/:cid", async (req, res) => {
   } catch (error) {
     res.status(404).json({ status: "error", error: error.message });
   }
+});
+
+// DELETE → vaciar carrito despues de confirmar compra
+router.delete("/:cid/products", async (req, res) => {
+  const { cid } = req.params;
+  await Cart.findByIdAndUpdate(cid, { products: [] });
+  res.json({ status: "success" });
 });
 
 export default router;
